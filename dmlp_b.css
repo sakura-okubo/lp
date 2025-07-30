@@ -238,26 +238,6 @@ section {
     overflow: hidden;
 }
 
-/* セクション背景に桜の透かし */
-section::before {
-    content: '';
-    position: absolute;
-    top: -100px; /* 範囲を広げる */
-    left: -100px;
-    right: -100px;
-    bottom: -100px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><circle cx="100" cy="100" r="90" fill="%23FFEDED" opacity="0.3"/></svg>'); /* 淡い桜色の丸を背景に */
-    background-size: 250px 250px; /* サイズを大きく */
-    opacity: 0.5; /* 透明度を調整 */
-    z-index: 0;
-    animation: sakura-bg 45s linear infinite; /* アニメーションを長く */
-}
-
-@keyframes sakura-bg {
-    from { background-position: 0 0; }
-    to { background-position: 2500px 2500px; } /* 終点を大きく */
-}
-
 .section-title {
     font-size: 3.2em; /* タイトルを大きく */
     font-weight: 700;
@@ -762,5 +742,44 @@ section::before {
     }
     .human-touch {
         margin-top: 30px;
+    }
+}
+
+/* about-us-section内のCTAボタンのスタイル */
+.about-us-cta {
+    margin-top: 40px; /* 上部に余白 */
+    text-align: center; /* ボタンを中央に配置 */
+}
+
+/* 横長のボタンのスタイル */
+.long-btn {
+    width: 100%; /* 親要素の幅いっぱいに広げる */
+    max-width: 400px; /* 最大幅を設定して、大きくなりすぎないようにする */
+    padding: 15px 30px; /* パディングを調整して縦長に */
+    font-size: 1.2em; /* フォントサイズを少し大きく */
+    display: inline-block; /* text-align: center; を機能させるため */
+    border-radius: 8px; /* 角丸を調整 */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.long-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* レスポンシブ対応の調整（既存のメディアクエリに追加） */
+@media (max-width: 768px) {
+    .long-btn {
+        max-width: 350px; /* タブレットでの最大幅調整 */
+        padding: 12px 25px;
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 576px) {
+    .long-btn {
+        max-width: 90%; /* スマホでは画面幅に合わせる */
+        padding: 10px 20px;
+        font-size: 1em;
     }
 }
