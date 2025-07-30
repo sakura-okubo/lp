@@ -550,31 +550,42 @@ section {
     }
 }
 
-/* NEW: 700px以下のブレークポイントを追加 */
-@media (max-width: 700px) {
-    .key-benefits {
-        flex-direction: column; /* 700px以下で1列表示 */
-        gap: 20px;
-    }
-    .benefit-box {
-        width: 100%;
-        flex-basis: auto;
-        min-width: unset;
-        transform: none;
-    }
-    .benefit-box:nth-child(even) {
-        transform: none;
-    }
-    .strengths-grid {
-        grid-template-columns: 1fr; /* 700px以下で1列表示 */
+@media (max-width: 768px) {
+    .about-us-content {
+        flex-direction: column; /* タブレット・スマホで縦並び */
         gap: 30px;
     }
-    /* NEW: Scrolling bar adjustment for 700px breakpoint */
+    .about-us-text {
+        text-align: center; /* テキストを中央寄せ */
+    }
+    .about-us-text h2::after {
+        margin: 10px auto 0 auto; /* 中央寄せ */
+    }
+    .about-us-image {
+        min-width: unset;
+        width: 80%; /* 画像幅調整 */
+    }
     .scrolling-bar-item {
         width: calc(20% - 16px); /* 1画面に5項目表示し、各項目間に20pxの余白を確保 */
     }
+    .long-btn {
+        max-width: 350px; /* タブレットでの最大幅調整 */
+        padding: 12px 25px;
+        font-size: 1.1em;
+    }
+    .company-logo-in-hero {
+        height: 40px; /* Smaller logo on tablets */
+    }
+    .phone-number {
+        font-size: 1.5em; /* Smaller phone number on tablets */
+    }
+    .top-bar {
+        padding: 10px 15px;
+    }
+    .hero-section {
+        padding-top: 60px; /* Adjust padding for smaller screens */
+    }
 }
-
 
 @media (max-width: 576px) {
     .hero-content {
@@ -649,15 +660,46 @@ section {
         text-align: center; /* H3のテキストを中央揃えに */
 		margin-top: 0;
         margin-bottom: 0; /* 不要な下マージンがあればリセット */
-
+}
     .strength-item p {
         text-align: center; /* Pタグのテキストも中央揃えに */
     }
-
+    .about-us-section {
+        padding: 40px 15px;
+    }
+    .about-us-text h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    .about-us-text p {
+        font-size: 1em;
+    }
+    .human-touch {
+        margin-top: 30px;
+    }
+    .scrolling-bar-item {
+        width: calc(33% - 15px); /* 1画面に4項目表示し、各項目間に20pxの余白を確保 */
+    }
+    .long-btn {
+        max-width: 90%; /* スマホでは画面幅に合わせる */
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+    .company-logo-in-hero {
+        height: 35px; /* Even smaller logo on mobile */
+    }
+    .phone-number {
+        font-size: 1.2em; /* Even smaller phone number on mobile */
+    }
+    .top-bar {
+        padding: 8px 10px;
+    }
+    .hero-section {
+        padding-top: 50px; /* Adjust padding for smaller screens */
+    }
     /* strength-item自体に text-align: center; が設定されている場合、
        上記の h3 と p の text-align は不要になることがあります。
        重複する場合は調整してください。 */
-}
 }
 
 /* 紹介セクション */
@@ -760,47 +802,6 @@ section {
     font-size: 1.1em;
 }
 
-
-/* レスポンシブ対応 */
-@media (max-width: 768px) {
-    .about-us-content {
-        flex-direction: column; /* タブレット・スマホで縦並び */
-        gap: 30px;
-    }
-    .about-us-text {
-        text-align: center; /* テキストを中央寄せ */
-    }
-    .about-us-text h2::after {
-        margin: 10px auto 0 auto; /* 中央寄せ */
-    }
-    .about-us-image {
-        min-width: unset;
-        width: 80%; /* 画像幅調整 */
-    }
-    .scrolling-bar-item {
-        width: calc(20% - 16px); /* 1画面に5項目表示し、各項目間に20pxの余白を確保 */
-    }
-}
-
-@media (max-width: 576px) {
-    .about-us-section {
-        padding: 40px 15px;
-    }
-    .about-us-text h2 {
-        font-size: 2em;
-        margin-bottom: 20px;
-    }
-    .about-us-text p {
-        font-size: 1em;
-    }
-    .human-touch {
-        margin-top: 30px;
-    }
-    .scrolling-bar-item {
-        width: calc(33% - 15px); /* 1画面に4項目表示し、各項目間に20pxの余白を確保 */
-    }
-}
-
 /* about-us-section内のCTAボタンのスタイル */
 .about-us-cta {
     margin-top: 40px; /* 上部に余白 */
@@ -821,45 +822,4 @@ section {
 .long-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-/* レスポンシブ対応の調整（既存のメディアクエリに追加） */
-@media (max-width: 768px) {
-    .long-btn {
-        max-width: 350px; /* タブレットでの最大幅調整 */
-        padding: 12px 25px;
-        font-size: 1.1em;
-    }
-    .company-logo-in-hero {
-        height: 40px; /* Smaller logo on tablets */
-    }
-    .phone-number {
-        font-size: 1.5em; /* Smaller phone number on tablets */
-    }
-    .top-bar {
-        padding: 10px 15px;
-    }
-    .hero-section {
-        padding-top: 60px; /* Adjust padding for smaller screens */
-    }
-}
-
-@media (max-width: 576px) {
-    .long-btn {
-        max-width: 90%; /* スマホでは画面幅に合わせる */
-        padding: 10px 20px;
-        font-size: 1em;
-    }
-    .company-logo-in-hero {
-        height: 35px; /* Even smaller logo on mobile */
-    }
-    .phone-number {
-        font-size: 1.2em; /* Even smaller phone number on mobile */
-    }
-    .top-bar {
-        padding: 8px 10px;
-    }
-    .hero-section {
-        padding-top: 50px; /* Adjust padding for smaller screens */
-    }
 }
