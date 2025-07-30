@@ -1,0 +1,71 @@
+.scrolling-bar-container {
+    width: 100%;
+    overflow: hidden; /* スクロールバー自体を隠す */
+    position: relative;
+    padding: 20px 0; /* 上下のパディング */
+    background-color: #f0f0f0; /* 背景色（例） */
+}
+
+.scrolling-bar-wrapper {
+    display: flex;
+    white-space: nowrap; /* 子要素が折り返さないように */
+    animation: scroll-left 30s linear infinite; /* JavaScriptで制御しない場合の自動スクロール */
+    /* JavaScriptでスクロールを制御する場合、このanimationプロパティは削除または調整します */
+}
+
+.scrolling-bar-item {
+    flex-shrink: 0; /* アイテムが縮小しないように */
+    width: 14%; /* デスクトップの場合、約7等分 */
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-right: 20px; /* アイテム間のスペース */
+}
+
+.scrolling-bar-item:last-child {
+    margin-right: 0;
+}
+
+.scrolling-bar-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px auto; /* 中央揃えと下のマージン */
+    border-radius: 5px; /* 角を丸くする */
+}
+
+.scrolling-bar-item p {
+    font-size: 0.9em;
+    color: #333;
+    margin: 0;
+}
+
+/* レスポンシブデザインのブレークポイント例 */
+@media (max-width: 1024px) {
+    .scrolling-bar-item {
+        width: 20%; /* タブレットで5項目程度表示 */
+    }
+}
+
+@media (max-width: 768px) {
+    .scrolling-bar-item {
+        width: 30%; /* 小さなタブレットで3-4項目程度表示 */
+    }
+}
+
+@media (max-width: 480px) {
+    .scrolling-bar-item {
+        width: 45%; /* モバイルで2項目表示 */
+        font-size: 0.8em;
+    }
+}
+
+/* JavaScriptでスクロールを制御しない場合のアニメーション */
+/* @keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%); 
+    }
+} */

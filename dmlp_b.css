@@ -1,0 +1,766 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* 基本設定 */
+html {
+    box-sizing: border-box; /* ここに追加 */
+}
+
+*, *::before, *::after {
+    box-sizing: inherit; /* 全てに適用 */
+}
+
+:root {
+    --color-sakura-light: #FFEDED; /* 非常に淡い桜色 */
+    --color-sakura-medium: #FFD2E2; /* 標準的な桜色 */
+    --color-sakura-dark: #FFB6C1;  /* 少し濃い桜色 */
+    --color-red-accent: #E55C5C; /* 強調用の赤（入会案内の赤を参考に） */
+    --color-text-dark: #333;
+    --color-text-light: #FFF;
+    --font-family-base: "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family-base);
+    line-height: 1.6;
+    color: var(--color-text-dark);
+    background-color: var(--color-sakura-light); /* 全体の背景色を淡い桜色に */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle; /* 画像の下にできる余白を削除 */
+}
+
+/* ヘッダー / ファーストビュー */
+.hero-section {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    /* ここに背景画像を設定してください */
+    /* 例: background-image: url('path/to/your/sakura-background.png'); */
+    background-color: #FFFFFF; /* 背景色を白に変更 */
+    background-size: cover;
+    background-position: center;
+
+    box-sizing: border-box; /* パディングを含めて幅を計算 */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* 背景より手前に表示 */
+    text-align: center;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* 半透明の白い背景で文字を見やすく */
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15); /* 影を強調 */
+    border: 3px solid var(--color-sakura-dark); /* 桜色の枠線 */
+}
+
+.catchcopy {
+    font-size: 3.5em;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    line-height: 1.2;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    display: inline-block; /* 上下ラインの基準 */
+    padding: 0 10px; /* ラインとテキストの間に隙間 */
+}
+
+/* チラシ風のキャッチコピー装飾 */
+.catchcopy::before, .catchcopy::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 6px; /* 上下のラインの太さ */
+    background-color: var(--color-red-accent);
+    left: 0;
+    transform: scaleX(0); /* 初期状態では非表示 */
+    transition: transform 0.3s ease-out;
+    border-radius: 3px; /* ラインの角を丸く */
+}
+.catchcopy::before { top: -15px; } /* 上ラインの位置 */
+.catchcopy::after { bottom: -15px; } /* 下ラインの位置 */
+.hero-content:hover .catchcopy::before,
+.hero-content:hover .catchcopy::after {
+    transform: scaleX(1); /* ホバーでライン出現 */
+}
+
+
+.sub-catchcopy {
+    font-size: 1.4em;
+    color: var(--color-text-dark);
+    margin-bottom: 40px;
+    font-weight: 500;
+}
+
+.key-benefits {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* 各ボックス間の隙間 */
+    margin-bottom: 50px;
+    flex-wrap: wrap; /* スマホで折り返す */
+}
+.benefit-box {
+    background-color: var(--color-sakura-medium);
+    padding: 20px;
+    border-radius: 15px; /* 角丸を少し大きく */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    flex: 1 1 calc(33.33% - 20px); /* 3列表示でギャップを考慮 */
+    min-width: 280px; /* 最小幅を設定して小さくなりすぎないように */
+    border: 3px dashed var(--color-red-accent); /* チラシ風の点線枠を太く */
+    /* transform: rotate(2deg); ← この行を削除するか、transform: none; に変更 */
+    transform: none; /* ボックスをまっすぐにする */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-box:nth-child(even) {
+    /* transform: rotate(-2deg); ← この行を削除するか、transform: none; に変更 */
+    transform: none; /* 偶数番目のボックスもまっすぐにする */
+}
+
+.benefit-box:hover {
+    transform: scale(1.05) rotate(0deg); /* ホバーで拡大＆まっすぐに (このままでOK) */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* 以下、その他のスタイルは変更なし */
+.benefit-box .benefit-icon {
+    width: 70px; /* アイコンサイズを少し大きく */
+    height: 70px;
+    margin-bottom: 15px;
+    display: block; /* 中央寄せ用 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.benefit-box h3 {
+    font-size: 1.6em; /* 見出しを大きく */
+    color: var(--color-text-dark);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.benefit-box .highlight-price {
+    font-size: 2.2em; /* 価格をさらに大きく */
+    font-weight: bold;
+    color: var(--color-red-accent);
+    line-height: 1.0em; /* 行間を調整 (例: 1.0em) */
+}
+
+.benefit-box .tax-info {
+    font-size: 0.9em; /* 税表記も少し大きく */
+    font-weight: normal;
+}
+
+.benefit-box p {
+    font-size: 1em; /* 段落のフォントサイズ調整 */
+    color: #555;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* ボタン間の隙間を調整 */
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 18px 40px; /* パディングを調整 */
+    border-radius: 50px;
+    font-size: 1.3em; /* ボタンの文字を大きく */
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    min-width: 250px; /* ボタンの最小幅 */
+}
+
+.primary-btn {
+    background-color: var(--color-red-accent);
+    color: var(--color-text-light);
+    border: 2px solid var(--color-red-accent);
+}
+
+.primary-btn:hover {
+    background-color: var(--color-text-light);
+    color: var(--color-red-accent);
+    transform: translateY(-5px); /* ホバーで少し浮き上がる */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: var(--color-red-accent);
+    border: 2px solid var(--color-red-accent);
+}
+
+.secondary-btn:hover {
+    background-color: var(--color-red-accent);
+    color: var(--color-text-light);
+    transform: translateY(-5px); /* ホバーで少し浮き上がる */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* メインコンテンツ共通スタイル */
+main {
+    padding: 80px 20px; /* 上下のパディングを増やす */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section {
+    background-color: #fff;
+    padding: 60px; /* パディングを増やす */
+    border-radius: 20px; /* 角丸を大きく */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* 影を強調 */
+    margin-bottom: 80px; /* セクション間の余白を増やす */
+    border: 1px solid var(--color-sakura-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+/* セクション背景に桜の透かし */
+section::before {
+    content: '';
+    position: absolute;
+    top: -100px; /* 範囲を広げる */
+    left: -100px;
+    right: -100px;
+    bottom: -100px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><circle cx="100" cy="100" r="90" fill="%23FFEDED" opacity="0.3"/></svg>'); /* 淡い桜色の丸を背景に */
+    background-size: 250px 250px; /* サイズを大きく */
+    opacity: 0.5; /* 透明度を調整 */
+    z-index: 0;
+    animation: sakura-bg 45s linear infinite; /* アニメーションを長く */
+}
+
+@keyframes sakura-bg {
+    from { background-position: 0 0; }
+    to { background-position: 2500px 2500px; } /* 終点を大きく */
+}
+
+.section-title {
+    font-size: 3.2em; /* タイトルを大きく */
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 60px; /* 下のマージンを増やす */
+    color: var(--color-text-dark);
+    position: relative;
+    z-index: 1;
+    line-height: 1.3;
+}
+
+.section-title .marker-title {
+    background: linear-gradient(transparent 60%, var(--color-sakura-medium) 60%);
+    display: inline;
+    padding: 0 8px; /* パディングを増やす */
+}
+
+.section-title .red-text {
+    color: var(--color-red-accent);
+}
+
+.section-title .subtitle {
+    display: block;
+    font-size: 0.6em;
+    font-weight: normal;
+    color: #666;
+    margin-top: 15px; /* マージンを増やす */
+}
+
+.strengths-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* 最小幅を少し大きく */
+    gap: 40px;
+    margin-bottom: 60px; /* 下のマージンを増やす */
+    position: relative;
+    z-index: 1;
+}
+
+.strength-item {
+    background-color: var(--color-sakura-light);
+    border: 2px solid var(--color-sakura-dark);
+    border-radius: 15px; /* 角丸を大きく */
+    padding: 35px; /* パディングを増やす */
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08); /* 影を強調 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.strength-item:hover {
+    transform: translateY(-8px); /* ホバーで大きく浮き上がる */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.strength-item .strength-header {
+
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px; /* マージンを増やす */
+    gap: 20px; /* ギャップを増やす */
+}
+
+.strength-item .strength-icon {
+    width: 60px; /* アイコンサイズを調整 */
+    height: 60px;
+    flex-shrink: 0;
+}
+
+.strength-item .strength-header h3 {
+    font-size: 1.4em; /* 見出しを調整 */
+    color: #E55C5C;
+    font-weight: bold;
+    line-height: 1.2;
+	text-align: left;
+}
+
+.strength-item p {
+    font-size: 1.05em; /* 段落のフォントサイズ調整 */
+    line-height: 1.8; /* 行間を広げる */
+    color: #444;
+	text-align: left;
+}
+
+.bottom-cta {
+    margin-top: 80px; /* セクション下部のCTAマージン */
+}
+
+/* レセコンセクション固有 */
+.section-rececon-strengths {
+    background-color: #fcfcfc; /* ややオフホワイトで差別化 */
+    border: 1px solid var(--color-sakura-medium);
+}
+
+.rececon-visual {
+    text-align: center;
+    margin-bottom: 50px; /* マージンを増やす */
+    position: relative;
+    z-index: 1;
+}
+
+.rececon-visual .rececon-main-img {
+    max-width: 90%; /* 画像の最大幅を調整 */
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.rececon-visual .note {
+    font-size: 1em; /* 注意書きのフォントサイズを調整 */
+    color: var(--color-red-accent);
+    margin-top: 20px;
+    font-weight: bold;
+    background-color: var(--color-sakura-light);
+    display: inline-block;
+    padding: 8px 20px; /* パディングを調整 */
+    border-radius: 8px;
+    border: 1px dashed var(--color-red-accent); /* 点線枠で強調 */
+}
+.rececon-visual img {
+    /* 画像に元々設定されているスタイル（例: width, height, max-widthなど）はそのまま残してください */
+    /* 必要であればここに記述します */
+    
+    /* ★ここを追記：上下左右に20pxのマージン（外側の余白）を設定 */
+    margin: 0 20px;
+}
+/* フッター */
+.site-footer {
+    text-align: center;
+    padding: 40px 20px; /* パディングを増やす */
+    background-color: var(--color-sakura-dark);
+    color: var(--color-text-light);
+    font-size: 0.9em;
+}
+
+.site-footer p {
+    margin-bottom: 8px;
+}
+
+
+/* NEW: Scrolling Bar Styles - メディアクエリの外に移動しました */
+.scrolling-bar-container {
+    width: 100%;
+    overflow: hidden; /* スクロールバー自体を隠す */
+    position: relative;
+    padding: 20px 0; /* 上下のパディング */
+    background-color: #FFFFFF; /* 背景色を白に変更 */
+    margin-bottom: 30px; /* hero-contentとの間に少しマージン */
+}
+
+.scrolling-bar-wrapper {
+    display: flex; /* これが横並びの鍵です */
+    white-space: nowrap; /* 子要素が折り返さないように */
+    /* JavaScriptでスクロールを制御するため、animationプロパティは不要 */
+}
+
+.scrolling-bar-item {
+    flex-shrink: 0; /* アイテムが縮小しないように */
+    width: 14%; /* デスクトップの場合、約7等分 */
+    text-align: center;
+    padding: 10px;
+	justify-content:center;
+    box-sizing: border-box;
+    margin-right: 20px; /* アイテム間のスペース */
+    background-color: #FFEDED; /* アイテムの背景色 */
+    border-radius: 10px; /* アイテムの角丸 */
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08); /* アイテムの影 */
+    transition: transform 0.2s ease-out;
+}
+
+.scrolling-bar-item:last-child {
+    margin-right: 0;
+}
+
+.scrolling-bar-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px; /* 角を丸くする */
+}
+
+.scrolling-bar-item p {
+    font-size: 0.9em;
+    color: var(--color-text-dark);
+    margin: 0;
+    white-space: normal; /* 説明文は折り返す */
+}
+
+
+/* レスポンシブ対応 */
+/* PCでのみ表示 */
+.pc-only {
+    display: inline; /* キャッチコピーの改行 */
+}
+/* スマートフォンでのみ表示 */
+.sp-only {
+    display: none;
+}
+
+
+@media (max-width: 992px) {
+    .hero-content {
+        padding: 30px 15px;
+        max-width: 90%; /* スマホでの幅を調整 */
+    }
+    .catchcopy {
+        font-size: 2.8em;
+        line-height: 1.3;
+    }
+    .sub-catchcopy {
+        font-size: 1.2em;
+    }
+    /* key-benefits と benefit-box の1列表示スタイルは700px以下に移動 */
+    .benefit-box .benefit-icon {
+        width: 50px;
+        height: 50px;
+    }
+    .benefit-box h3 {
+        font-size: 1.4em;
+    }
+    .section-title {
+        font-size: 2.2em;
+    }
+    .section-title .subtitle {
+        font-size: 0.6em;
+    }
+    /* strengths-grid の1列表示スタイルは700px以下に移動 */
+    .strength-item {
+        padding: 30px;
+    }
+    .strength-item .strength-icon {
+        width: 50px;
+        height: 50px;
+    }
+    .strength-item .strength-header h3 {
+        font-size: 1.3em;
+    }
+    .btn {
+        width: 90%;
+        max-width: 350px;
+        font-size: 1.1em;
+        padding: 15px 25px;
+    }
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    section {
+        padding: 40px 25px;
+        margin-bottom: 40px;
+    }
+
+    /* スマートフォンでのみ表示 */
+    .sp-only {
+        display: inline; /* ここでdisplayをinlineにして改行を有効に */
+    }
+    /* PCでは非表示 */
+    .pc-only {
+        display: none;
+    }
+}
+
+/* NEW: 700px以下のブレークポイントを追加 */
+@media (max-width: 700px) {
+    .key-benefits {
+        flex-direction: column; /* 700px以下で1列表示 */
+        gap: 20px;
+    }
+    .benefit-box {
+        width: 100%;
+        flex-basis: auto;
+        min-width: unset;
+        transform: none;
+    }
+    .benefit-box:nth-child(even) {
+        transform: none;
+    }
+    .strengths-grid {
+        grid-template-columns: 1fr; /* 700px以下で1列表示 */
+        gap: 30px;
+    }
+    /* NEW: Scrolling bar adjustment for 700px breakpoint */
+    .scrolling-bar-item {
+        width: calc(20% - 16px); /* 1画面に5項目表示し、各項目間に20pxの余白を確保 */
+    }
+}
+
+
+@media (max-width: 576px) {
+    .hero-content {
+        padding: 25px 15px;
+    }
+    .catchcopy {
+        font-size: 2.2em;
+        padding-left: 5px;
+        padding-right: 5px;
+        
+        /* ★重要：上下のパディングを増やし、テキストとハイライトの間に十分な空間を確保 */
+        padding-top: 12px; /* 例: 現在より増やす。適切な値に調整してください */
+        padding-bottom: 12px; /* 例: 現在より増やす。適切な値に調整してください */
+        
+        /* ★行間を適切に調整し、文字の重なりを防ぐ */
+        line-height: 1.4; /* 例: 1.3から1.4へ。文字が重ならない範囲で調整 */
+    }
+    .catchcopy::before, .catchcopy::after {
+        height: 4px; /* マーカーの高さは現状維持 */
+        
+        /* ★重要：ハイライトの位置を調整。テキストの上下パディングを考慮して、
+              ハイライトがテキストを「切らず」に背景にくるように位置を調整します。 */
+        /* padding-top/bottom の半分程度の値を負で指定すると、
+           ハイライトがパディング領域の上下中央あたりに配置されます。 */
+        top: -6px; /* 例: padding-top:12pxの半分。調整してください */
+        bottom: -6px; /* 例: padding-bottom:12pxの半分。調整してください */
+    }
+    .sub-catchcopy {
+        font-size: 1em;
+        margin-bottom: 30px;
+    }
+    .key-benefits {
+        gap: 15px;
+    }
+    .benefit-box {
+        padding: 15px;
+    }
+    .benefit-box .benefit-icon {
+        width: 40px;
+        height: 40px;
+    }
+    .benefit-box h3 {
+        font-size: 1.2em;
+    }
+    .benefit-box .highlight-price {
+        font-size: 1.8em;
+    }
+    .cta-buttons {
+        gap: 10px;
+        margin-top: 30px;
+    }
+
+    /* NEW: Scrolling bar adjustment for mobile */
+    .scrolling-bar-item {
+        width: calc(33% - 15px); /* 1画面に4項目表示し、各項目間に20pxの余白を確保 */
+        /* margin-right: 20px; は既存のスタイルで適用されているため、ここでは変更不要 */
+    }
+	.strength-header {
+        flex-direction: column; /* 画像が上、H3が下になるように並び順を変更 */
+        align-items: center; /* 垂直方向（新しい主軸）で中央揃え */
+        justify-content: center; /* 水平方向（新しい交差軸）で中央揃え */
+        /* text-align: left; がもしあれば、ここから削除するか、個別の要素で調整します */
+    }
+
+  .strength-item  .strength-header img {
+        margin-right: 0; /* 横方向の余白をリセット */
+        margin-top: 0px; /* H3と画像の間隔を作成 */
+		border-radius: 15px;
+    }
+
+    .strength-item h3 {
+        text-align: center; /* H3のテキストを中央揃えに */
+		margin-top: 0;
+        margin-bottom: 0; /* 不要な下マージンがあればリセット */
+
+    .strength-item p {
+        text-align: center; /* Pタグのテキストも中央揃えに */
+    }
+
+    /* strength-item自体に text-align: center; が設定されている場合、
+       上記の h3 と p の text-align は不要になることがあります。
+       重複する場合は調整してください。 */
+}
+}
+
+/* 紹介セクション */
+.about-us-section {
+    background-color: var(--color-text-light); /* 背景色を白系に */
+    padding: 60px 20px;
+    text-align: center;
+    overflow: hidden; /* 画像がはみ出さないように */
+}
+
+.about-us-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row; /* 基本は横並び */
+    align-items: center;
+    gap: 40px;
+}
+
+.about-us-image {
+    flex: 1;
+    min-width: 300px; /* 画像の最小幅 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-us-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* 角丸にする場合 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.about-us-text {
+    flex: 1.5; /* テキストエリアを広めに */
+    text-align: left;
+}
+
+.about-us-text h2 {
+    font-size: 2.5em;
+    color: var(--color-text-dark);
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* h2の下線デザイン */
+.about-us-text h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--color-sakura-medium);
+    margin: 10px auto 0 0; /* 左寄せ */
+    border-radius: 2px;
+}
+
+.about-us-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: var(--color-text-dark);
+    margin-bottom: 20px;
+}
+
+.about-us-text p span {
+    font-weight: bold;
+    color: var(--color-red-accent); /* 強調色 */
+}
+
+/* 人の気配を感じさせる部分 */
+.human-touch {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    text-align: center; /* 内部要素を中央に */
+}
+
+.human-touch p {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+.human-touch .team-photo {
+    width: 80px; /* 写真のサイズ */
+    height: 80px;
+    border-radius: 50%; /* 丸い写真 */
+    object-fit: cover;
+    margin: 0 auto 10px auto; /* 中央配置と下マージン */
+    display: block; /* margin: auto を機能させるため */
+    border: 3px solid var(--color-sakura-medium); /* 枠線 */
+}
+
+.human-touch .signature {
+    font-weight: bold;
+    color: var(--color-text-dark);
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .about-us-content {
+        flex-direction: column; /* タブレット・スマホで縦並び */
+        gap: 30px;
+    }
+    .about-us-text {
+        text-align: center; /* テキストを中央寄せ */
+    }
+    .about-us-text h2::after {
+        margin: 10px auto 0 auto; /* 中央寄せ */
+    }
+    .about-us-image {
+        min-width: unset;
+        width: 80%; /* 画像幅調整 */
+    }
+}
+
+@media (max-width: 576px) {
+    .about-us-section {
+        padding: 40px 15px;
+    }
+    .about-us-text h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    .about-us-text p {
+        font-size: 1em;
+    }
+    .human-touch {
+        margin-top: 30px;
+    }
+}
