@@ -238,7 +238,7 @@ img {
     position: relative;
     overflow: hidden;
     z-index: 1;
-    min-width: 250px; /* ボタンの最小幅 */
+    min-width: 200px; /* ボタンの最小幅 */
 }
 
 .primary-btn {
@@ -474,234 +474,6 @@ section {
     margin: 0;
     white-space: normal; /* 説明文は折り返す */
 }
-
-
-/* レスポンシブ対応 */
-/* PCでのみ表示 */
-.pc-only {
-    display: inline; /* キャッチコピーの改行 */
-}
-/* スマートフォンでのみ表示 */
-.sp-only {
-    display: none;
-}
-
-
-@media (max-width: 992px) {
-    .hero-content {
-        padding: 30px 15px;
-        max-width: 90%; /* スマホでの幅を調整 */
-    }
-    .catchcopy {
-        font-size: 2.8em;
-        line-height: 1.3;
-    }
-    .sub-catchcopy {
-        font-size: 1.2em;
-    }
-    /* key-benefits と benefit-box の1列表示スタイルは700px以下に移動 */
-    .benefit-box .benefit-icon {
-        width: 50px;
-        height: 50px;
-    }
-    .benefit-box h3 {
-        font-size: 1.4em;
-    }
-    .section-title {
-        font-size: 2.2em;
-    }
-    .section-title .subtitle {
-        font-size: 0.6em;
-    }
-    /* strengths-grid の1列表示スタイルは700px以下に移動 */
-    .strength-item {
-        padding: 30px;
-    }
-    .strength-item .strength-icon {
-        width: 50px;
-        height: 50px;
-    }
-    .strength-item .strength-header h3 {
-        font-size: 1.3em;
-    }
-    .btn {
-        width: 90%;
-        max-width: 350px;
-        font-size: 1.1em;
-        padding: 15px 25px;
-    }
-    .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-    section {
-        padding: 40px 25px;
-        margin-bottom: 40px;
-    }
-
-    /* スマートフォンでのみ表示 */
-    .sp-only {
-        display: inline; /* ここでdisplayをinlineにして改行を有効に */
-    }
-    /* PCでは非表示 */
-    .pc-only {
-        display: none;
-    }
-}
-
-@media (max-width: 768px) {
-    .about-us-content {
-        flex-direction: column; /* タブレット・スマホで縦並び */
-        gap: 30px;
-    }
-    .about-us-text {
-        text-align: center; /* テキストを中央寄せ */
-    }
-    .about-us-text h2::after {
-        margin: 10px auto 0 auto; /* 中央寄せ */
-    }
-    .about-us-image {
-        min-width: unset;
-        width: 80%; /* 画像幅調整 */
-    }
-    .scrolling-bar-item {
-        width: calc(20% - 16px); /* 1画面に5項目表示し、各項目間に20pxの余白を確保 */
-    }
-    .long-btn {
-        max-width: 350px; /* タブレットでの最大幅調整 */
-        padding: 12px 25px;
-        font-size: 1.1em;
-    }
-    .company-logo-in-hero {
-        height: 40px; /* Smaller logo on tablets */
-    }
-    .phone-number {
-        font-size: 1.5em; /* Smaller phone number on tablets */
-    }
-    .top-bar {
-        padding: 10px 15px;
-    }
-    .hero-section {
-        padding-top: 60px; /* Adjust padding for smaller screens */
-    }
-}
-
-@media (max-width: 576px) {
-    .hero-content {
-        padding: 25px 15px;
-    }
-    .catchcopy {
-        font-size: 2.2em;
-        padding-left: 5px;
-        padding-right: 5px;
-        
-        /* ★重要：上下のパディングを増やし、テキストとハイライトの間に十分な空間を確保 */
-        padding-top: 12px; /* 例: 現在より増やす。適切な値に調整してください */
-        padding-bottom: 12px; /* 例: 現在より増やす。適切な値に調整してください */
-        
-        /* ★行間を適切に調整し、文字の重なりを防ぐ */
-        line-height: 1.4; /* 例: 1.3から1.4へ。文字が重ならない範囲で調整 */
-    }
-    .catchcopy::before, .catchcopy::after {
-        height: 4px; /* マーカーの高さは現状維持 */
-        
-        /* ★重要：ハイライトの位置を調整。テキストの上下パディングを考慮して、
-              ハイライトがテキストを「切らず」に背景にくるように位置を調整します。 */
-        /* padding-top/bottom の半分程度の値を負で指定すると、
-           ハイライトがパディング領域の上下中央あたりに配置されます。 */
-        top: -6px; /* 例: padding-top:12pxの半分。調整してください */
-        bottom: -6px; /* 例: padding-bottom:12pxの半分。調整してください */
-    }
-    .sub-catchcopy {
-        font-size: 1em;
-        margin-bottom: 30px;
-    }
-    .key-benefits {
-        gap: 15px;
-    }
-    .benefit-box {
-        padding: 15px;
-    }
-    .benefit-box .benefit-icon {
-        width: 40px;
-        height: 40px;
-    }
-    .benefit-box h3 {
-        font-size: 1.2em;
-    }
-    .benefit-box .highlight-price {
-        font-size: 1.8em;
-    }
-    .cta-buttons {
-        gap: 10px;
-        margin-top: 30px;
-    }
-
-    /* NEW: Scrolling bar adjustment for mobile */
-    .scrolling-bar-item {
-        width: calc(33% - 15px); /* 1画面に4項目表示し、各項目間に20pxの余白を確保 */
-        /* margin-right: 20px; は既存のスタイルで適用されているため、ここでは変更不要 */
-    }
-	.strength-header {
-        flex-direction: column; /* 画像が上、H3が下になるように並び順を変更 */
-        align-items: center; /* 垂直方向（新しい主軸）で中央揃え */
-        justify-content: center; /* 水平方向（新しい交差軸）で中央揃え */
-        /* text-align: left; がもしあれば、ここから削除するか、個別の要素で調整します */
-    }
-
-  .strength-item  .strength-header img {
-        margin-right: 0; /* 横方向の余白をリセット */
-        margin-top: 0px; /* H3と画像の間隔を作成 */
-		border-radius: 15px;
-    }
-
-    .strength-item h3 {
-        text-align: center; /* H3のテキストを中央揃えに */
-		margin-top: 0;
-        margin-bottom: 0; /* 不要な下マージンがあればリセット */
-}
-    .strength-item p {
-        text-align: center; /* Pタグのテキストも中央揃えに */
-    }
-    .about-us-section {
-        padding: 40px 15px;
-    }
-    .about-us-text h2 {
-        font-size: 2em;
-        margin-bottom: 20px;
-    }
-    .about-us-text p {
-        font-size: 1em;
-    }
-    .human-touch {
-        margin-top: 30px;
-    }
-    .scrolling-bar-item {
-        width: calc(33% - 15px); /* 1画面に4項目表示し、各項目間に20pxの余白を確保 */
-    }
-    .long-btn {
-        max-width: 90%; /* スマホでは画面幅に合わせる */
-        padding: 10px 20px;
-        font-size: 1em;
-    }
-    .company-logo-in-hero {
-        height: 35px; /* Even smaller logo on mobile */
-    }
-    .phone-number {
-        font-size: 1.2em; /* Even smaller phone number on mobile */
-    }
-    .top-bar {
-        padding: 8px 10px;
-    }
-    .hero-section {
-        padding-top: 50px; /* Adjust padding for smaller screens */
-    }
-    /* strength-item自体に text-align: center; が設定されている場合、
-       上記の h3 と p の text-align は不要になることがあります。
-       重複する場合は調整してください。 */
-}
-
 /* 紹介セクション */
 .about-us-section {
     background-color: var(--color-text-light); /* 背景色を白系に */
@@ -823,3 +595,243 @@ section {
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
+
+
+/* レスポンシブ対応 */
+/* PCでのみ表示 */
+.pc-only {
+    display: inline; /* キャッチコピーの改行 */
+}
+/* スマートフォンでのみ表示 */
+.sp-only {
+    display: none;
+}
+
+
+@media (max-width: 992px) {
+    .hero-content {
+        padding: 30px 15px;
+        max-width: 90%; /* スマホでの幅を調整 */
+    }
+    .catchcopy {
+        font-size: 2.8em;
+        line-height: 1.3;
+    }
+    .sub-catchcopy {
+        font-size: 1.2em;
+    }
+    /* key-benefits と benefit-box の1列表示スタイルは700px以下に移動 */
+    .benefit-box .benefit-icon {
+        width: 50px;
+        height: 50px;
+    }
+    .benefit-box h3 {
+        font-size: 1.4em;
+    }
+    .section-title {
+        font-size: 2.2em;
+    }
+    .section-title .subtitle {
+        font-size: 0.6em;
+    }
+    /* strengths-grid の1列表示スタイルは700px以下に移動 */
+    .strength-item {
+        padding: 10px;
+    }
+    .strength-item .strength-icon {
+        width: 50px;
+        height: 50px;
+    }
+    .strength-item .strength-header h3 {
+        font-size: 1.3em;
+    }
+    .btn {
+        width: 90%;
+        max-width: 350px;
+        font-size: 1.1em;
+        padding: 15px 25px;
+    }
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    section {
+        padding: 40px 25px;
+        margin-bottom: 40px;
+    }
+
+    /* スマートフォンでのみ表示 */
+    .sp-only {
+        display: inline; /* ここでdisplayをinlineにして改行を有効に */
+    }
+    /* PCでは非表示 */
+    .pc-only {
+        display: none;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .benefit-box {
+        /*
+         * min-widthを0にリセットすることで、コンテナが狭くなった際に
+         * アイテムが折り返さず、柔軟に縮小して3列を維持します。
+         */
+        min-width: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .strengths-grid {
+        grid-template-columns: 1fr; /* 1列に固定 */
+        gap: 30px; /* アイテム間の余白を調整 */
+    }
+
+    /* アイテム内のレイアウトを縦積みに変更 */
+    .strength-header {
+        flex-direction: column; /* アイコンと見出しを縦に並べる */
+        align-items: center;
+        gap: 0; /* 不要なギャップをリセット */
+    }
+
+    .strength-item .strength-header img {
+        margin-right: 0;
+        margin-bottom: 15px; /* アイコンと見出しの間に余白を追加 */
+    }
+
+    /* アイテム内のテキストを全て中央揃えに */
+    .strength-item h3,
+    .strength-item p {
+        text-align: center;
+    }
+    .about-us-content {
+        flex-direction: column; /* タブレット・スマホで縦並び */
+        gap: 30px;
+    }
+    .about-us-text {
+        text-align: center; /* テキストを中央寄せ */
+    }
+    .about-us-text h2::after {
+        margin: 10px auto 0 auto; /* 中央寄せ */
+    }
+    .about-us-image {
+        min-width: unset;
+        width: 80%; /* 画像幅調整 */
+    }
+    .scrolling-bar-item {
+        width: calc(20% - 16px); /* 1画面に5項目表示し、各項目間に20pxの余白を確保 */
+    }
+    .long-btn {
+        max-width: 350px; /* タブレットでの最大幅調整 */
+        padding: 12px 25px;
+        font-size: 1.1em;
+    }
+    .company-logo-in-hero {
+        height: 40px; /* Smaller logo on tablets */
+    }
+    .phone-number {
+        font-size: 1.5em; /* Smaller phone number on tablets */
+    }
+    .top-bar {
+        padding: 10px 15px;
+    }
+    .hero-section {
+        padding-top: 60px; /* Adjust padding for smaller screens */
+    }
+	
+}
+
+@media (max-width: 576px) {
+    .hero-content {
+        padding: 25px 15px;
+    }
+    .catchcopy {
+        font-size: 2.2em;
+        padding-left: 5px;
+        padding-right: 5px;
+        
+        /* ★重要：上下のパディングを増やし、テキストとハイライトの間に十分な空間を確保 */
+        padding-top: 12px; /* 例: 現在より増やす。適切な値に調整してください */
+        padding-bottom: 12px; /* 例: 現在より増やす。適切な値に調整してください */
+        
+        /* ★行間を適切に調整し、文字の重なりを防ぐ */
+        line-height: 1.4; /* 例: 1.3から1.4へ。文字が重ならない範囲で調整 */
+    }
+    .catchcopy::before, .catchcopy::after {
+        height: 4px; /* マーカーの高さは現状維持 */
+        
+        /* ★重要：ハイライトの位置を調整。テキストの上下パディングを考慮して、
+              ハイライトがテキストを「切らず」に背景にくるように位置を調整します。 */
+        /* padding-top/bottom の半分程度の値を負で指定すると、
+           ハイライトがパディング領域の上下中央あたりに配置されます。 */
+        top: -6px; /* 例: padding-top:12pxの半分。調整してください */
+        bottom: -6px; /* 例: padding-bottom:12pxの半分。調整してください */
+    }
+    .sub-catchcopy {
+        font-size: 1em;
+        margin-bottom: 30px;
+    }
+    .key-benefits {
+        gap: 15px;
+    }
+    .benefit-box {
+        padding: 15px;
+    }
+    .benefit-box .benefit-icon {
+        width: 40px;
+        height: 40px;
+    }
+    .benefit-box h3 {
+        font-size: 1.2em;
+    }
+    .benefit-box .highlight-price {
+        font-size: 1.8em;
+    }
+    .cta-buttons {
+        gap: 10px;
+        margin-top: 30px;
+    }
+
+    /* NEW: Scrolling bar adjustment for mobile */
+    .scrolling-bar-item {
+        width: calc(33% - 15px); /* 1画面に4項目表示し、各項目間に20pxの余白を確保 */
+        /* margin-right: 20px; は既存のスタイルで適用されているため、ここでは変更不要 */
+    }
+
+    .about-us-section {
+        padding: 40px 15px;
+    }
+    .about-us-text h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    .about-us-text p {
+        font-size: 1em;
+    }
+    .human-touch {
+        margin-top: 30px;
+    }
+    .scrolling-bar-item {
+        width: calc(33% - 15px); /* 1画面に4項目表示し、各項目間に20pxの余白を確保 */
+    }
+    .long-btn {
+        max-width: 90%; /* スマホでは画面幅に合わせる */
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+    .company-logo-in-hero {
+        height: 35px; /* Even smaller logo on mobile */
+    }
+    .phone-number {
+        font-size: 1.2em; /* Even smaller phone number on mobile */
+    }
+    .top-bar {
+        padding: 8px 10px;
+    }
+    .hero-section {
+        padding-top: 50px; /* Adjust padding for smaller screens */
+    }
+
+
+}
+
